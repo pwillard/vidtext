@@ -1,9 +1,28 @@
-﻿' Program	ugMapAdv.bas  
+﻿' Program	ugMapAdv.bas
 ' Purpose 	Mixed Screen Test
 ' 
 ' ugBasic 	Color Computer 3
 
 DEFINE KEYBOARD RATE 1
+
+DIM noun$(30)
+noun$(0)="NORTH"
+noun$(1)="SOUTH"
+noun$(2)="EAST"
+noun$(3)= "WEST"
+noun$(4)="UP"
+noun$(5)="DOWN"
+noun$(6)="STATUS"
+
+DIM verb$(30)
+verb$(0)= "GO"
+verb$(1)= "GET"
+verb$(2)="LOOK"
+verb$(3)="CARRY"
+verb$(4)="STORE"
+
+GLOBAL action
+GLOBAL subject
 
 xloc = 21
 batt$ = "100%"
@@ -49,8 +68,47 @@ ELSE
 	word1$ = sentence$: word2$ = ""
 ENDIF
 
-PRINT "Word 1 " + word1$
-PRINT "Word 2 " + word2$
+'PRINT "Word 1 " + word1$
+'PRINT "Word 2 " + word2$
+
+action = 255
+subject = 255
+
+FOR x = 0 TO 4
+ IF	(LEFT$(word1$,3) = LEFT$(verb$(x),3)) THEN 
+ 	action = x: myverb$ = verb$(x)
+ ELSE
+ 	REM nothing
+ ENDIF
+NEXT
+ 
+' uncommenting this block crashes program
+'FOR y = 0 TO 6
+'	IF (LEFT$(word2$,3) = LEFT$(noun$(y),3)) THEN
+'	    subject = y: mynoun$ = noun$(y)
+'	ELSE
+'		REM nothing
+'	ENDIF
+'NEXT
+	 
+ 
+ IF action <> 255 THEN
+ 	PRINT myverb$
+ ENDIF
+ 
+ IF subject <> 255 THEN
+ 	PRINT mynoun$
+ ENDIF
+
+
+' debug uncomment also crashes program
+'PRINT action
+'PRINT subject
+
+' on action gosub here ...
+
+' on subject gosub here ...
+
 
 WAIT 1000 MS
 

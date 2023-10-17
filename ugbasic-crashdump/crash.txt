@@ -1,0 +1,434 @@
+See the end of this message for details on invoking 
+just-in-time (JIT) debugging instead of this dialog box.
+
+ Exception Text 
+System.Runtime.InteropServices.ExternalException (0x80004005) A generic error occurred in GDI+.
+   at System.Drawing.Graphics.CheckErrorStatus(Int32 status)
+   at System.Windows.Forms.ToolStripProfessionalRenderer.RenderBackgroundGradient(Graphics g, Control control, Color beginColor, Color endColor, Orientation orientation)
+   at System.Windows.Forms.ToolStripProfessionalRenderer.RenderMenuStripBackground(ToolStripRenderEventArgs e)
+   at System.Windows.Forms.ToolStripRenderer.DrawToolStripBackground(ToolStripRenderEventArgs e)
+   at System.Windows.Forms.ToolStrip.OnPaintBackground(PaintEventArgs e)
+   at System.Windows.Forms.Control.PaintWithErrorHandling(PaintEventArgs e, Int16 layer)
+   at System.Windows.Forms.Control.WmPaint(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ToolStrip.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, WM msg, IntPtr wparam, IntPtr lparam)
+
+
+ Loaded Assemblies 
+System.Private.CoreLib
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+ugbasic-ide
+    Assembly Version 1.15.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Windows.Forms
+    Assembly Version 6.0.2.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.ComponentModel.Primitives
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Runtime
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Windows.Forms.Primitives
+    Assembly Version 6.0.2.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Runtime.InteropServices
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Drawing.Primitives
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Collections.Specialized
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+Microsoft.VisualBasic.Forms
+    Assembly Version 6.0.2.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Drawing.Common
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Diagnostics.TraceSource
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Collections
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+Microsoft.Win32.Primitives
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Threading
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.ComponentModel.EventBasedAsync
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Threading.Thread
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+Accessibility
+    Assembly Version 4.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.ComponentModel.TypeConverter
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+Microsoft.Win32.SystemEvents
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Collections.Concurrent
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.ComponentModel
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Numerics.Vectors
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Memory
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Resources.Extensions
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Drawing
+    Assembly Version 6.0.2.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.ObjectModel
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Linq
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Runtime.Loader
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Collections.NonGeneric
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+Microsoft.VisualBasic.Core
+    Assembly Version 11.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Xml.ReaderWriter
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Private.Xml
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Xml.XmlSerializer
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Text.Encoding.Extensions
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Text.RegularExpressions
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Reflection.Emit.ILGeneration
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Reflection.Emit
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+Microsoft.GeneratedCode
+    Assembly Version 1.0.0.0
+    Win32 Version na
+    CodeBase fileCProgramsugbasicSystem.Private.Xml.dll
+----------------------------------------
+System.Reflection.Primitives
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+Microsoft.GeneratedCode
+    Assembly Version 1.0.0.0
+    Win32 Version na
+    CodeBase fileCProgramsugbasicSystem.Private.Xml.dll
+----------------------------------------
+Microsoft.GeneratedCode
+    Assembly Version 1.0.0.0
+    Win32 Version na
+    CodeBase fileCProgramsugbasicSystem.Private.Xml.dll
+----------------------------------------
+Microsoft.GeneratedCode
+    Assembly Version 1.0.0.0
+    Win32 Version na
+    CodeBase fileCProgramsugbasicSystem.Private.Xml.dll
+----------------------------------------
+Microsoft.GeneratedCode
+    Assembly Version 1.0.0.0
+    Win32 Version na
+    CodeBase fileCProgramsugbasicSystem.Private.Xml.dll
+----------------------------------------
+Microsoft.GeneratedCode
+    Assembly Version 1.0.0.0
+    Win32 Version na
+    CodeBase fileCProgramsugbasicSystem.Private.Xml.dll
+----------------------------------------
+Microsoft.GeneratedCode
+    Assembly Version 1.0.0.0
+    Win32 Version na
+    CodeBase fileCProgramsugbasicSystem.Private.Xml.dll
+----------------------------------------
+Microsoft.GeneratedCode
+    Assembly Version 1.0.0.0
+    Win32 Version na
+    CodeBase fileCProgramsugbasicSystem.Private.Xml.dll
+----------------------------------------
+Microsoft.GeneratedCode
+    Assembly Version 1.0.0.0
+    Win32 Version na
+    CodeBase fileCProgramsugbasicSystem.Private.Xml.dll
+----------------------------------------
+System.Net.WebClient
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Net.Requests
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Private.Uri
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Net.Primitives
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Net.WebHeaderCollection
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Net.Http
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Diagnostics.Tracing
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Net.ServicePoint
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Net.Security
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Security.Cryptography.X509Certificates
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Diagnostics.DiagnosticSource
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Net.Sockets
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Net.NameResolution
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Security.Cryptography.Primitives
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Security.Principal.Windows
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Security.Claims
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Threading.Overlapped
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Threading.ThreadPool
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Security.Cryptography.Encoding
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Linq.Expressions
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Runtime.CompilerServices.Unsafe
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+Alsing.SyntaxBox
+    Assembly Version 2.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Resources.ResourceManager
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Web.HttpUtility
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Runtime.Extensions
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Runtime.Serialization.Formatters
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+mscorlib
+    Assembly Version 4.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Reflection.Emit.Lightweight
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Diagnostics.Process
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Diagnostics.Debug
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Net.NetworkInformation
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Diagnostics.StackTrace
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Reflection.Metadata
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+System.Collections.Immutable
+    Assembly Version 6.0.0.0
+    Win32 Version na
+    CodeBase 
+----------------------------------------
+
+ JIT Debugging 
+
+
