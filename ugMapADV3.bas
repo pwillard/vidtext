@@ -4,6 +4,13 @@
 ' Purpose 	Mixed Screen Test
 ' 
 ' ugBasic 	Color Computer 3
+'
+'                    
+'  ,-. ,-. ,-. ,-.  ,-. 
+'  |   | | |   | |   -< 
+'  `-' `-' `-' `-'  `-' 
+'                                              
+'--------------------------------------
 
 DEFINE KEYBOARD RATE 1
 
@@ -16,6 +23,7 @@ noun$(4)="UP"
 noun$(5)="DOWN"
 noun$(6)="STATUS"
 
+' Careful... we only check the first 3 letters.
 DIM verb$(30)
 verb$(0)= "GO"
 verb$(1)= "GET"
@@ -28,12 +36,23 @@ GLOBAL subject
 GLOBAL speed
 GLOBAL movecount
 GLOBAL finished
-GLOBAL b
+GLOBAL speed
+GLOBAL center$
+GLOBAL x
+
+PROCEDURE centerit[center$]
+ width = 40
+ x = (width - LEN(center$))/2
+ sp$ = STRING$(" ",x)
+ 'PRINT sp$;
+ PRINT center$
+END PROC
 
 speed = 5
 
 CONST xloc = 21 
 ' status screen X location
+
 batt$ = "100%"
 
 ' COCO 3 16 color medium resolution text
@@ -48,9 +67,13 @@ CLS BLACK
 mainimage = LOAD IMAGE ("main.png")
 PUT IMAGE mainimage AT 0,0
 
-LOCATE 10,8
-PRINT "MALP Rescue Mission"
+INK CYAN
 
+center$ = "SG-16 MALP Rescue Mission"
+x = (40 - LEN(center$))/2
+LOCATE x,8 : PRINT center$
+
+INK WHITE
 LOCATE 0,10
 PRINT "You are a Stargate Ground Crew member."
 PRINT "Your job: MALP Operator."
@@ -63,19 +86,14 @@ PRINT "The video feed has been tampered with"
 PRINT "so you don't know where it is visually."
 PRINT "Also, recover any related dislocated"
 PRINT "parts and materials."
-LOCATE 0,24: PRINT "Press any key"
-
-REPEAT
-REM LOOP 
-UNTIL INKEY$ <> ""
+GOSUB pausekey:
 
 CLS BLACK
 
 PUT IMAGE mainimage AT 0,0
-
-LOCATE 10,8
-PRINT "MALP Rescue Mission"
-
+INK CYAN
+LOCATE x,8 : PRINT center$
+INK WHITE
 LOCATE 0,10
 PRINT "The MALP takes simple commands in"
 PRINT "'VERB NOUN' format."
@@ -84,16 +102,13 @@ PRINT "Preliminary data from the disabled"
 PRINT "MALP shows the atmosphere to be "
 PRINT "toxic and there are unknown enemy" 
 PRINT "who may have attacked or disabled"
-PRINT "the MALP to be recovered."
-PRINT "You won't have the team's help."
+PRINT "the MALP you need to recover."
+PRINT ""
+PRINT "You won't have the SG-16's help."
 PRINT "The same fate may await your MALP,"
 PRINT "so be careful."
 
-LOCATE 0,24: PRINT "Press any key"
-
-REPEAT
-REM LOOP 
-UNTIL INKEY$ <> ""
+GOSUB pausekey:
 
 mainscreen:
 
@@ -101,11 +116,10 @@ WHILE NOT finished
 CLS BLACK
 PEN WHITE
 INK WHITE
-' These steps should draw a frame on the screen.
-' they don't
+
 DRAW mid1,0 TO mid1,80
 DRAW 0,80 TO 320,80
-DRAW 0,10 TO 10,10
+
 
 LOCATE xloc,0 
 PRINT "MALP STATUS";
@@ -116,14 +130,13 @@ LOCATE xloc,2
 INK RED
 PRINT "Alert Lvl: "+ "RED" 
 
-PEN 15
+INK WHITE
 LOCATE xloc,3
-PRINT "Speed :";: PRINT speed
-' This should draw a square in the map display area
-' it doesn't
-BOX 1,1 TO 75,75
+PRINT "Speed :";speed
 
-PEN 16                               
+INK GREEN  
+LOCATE 0,12
+PRINT "Location: "                            
 LOCATE 0,13
 PRINT "Command Entry: "; 
 INPUT sentence$
@@ -137,8 +150,8 @@ ELSE
 	word1$ = sentence$: word2$ = ""
 ENDIF
 
-'PRINT "Word 1 " + word1$
-'PRINT "Word 2 " + word2$
+PRINT "Word 1 " + word1$
+PRINT "Word 2 " + word2$
 
 action = 255
 subject = 255
@@ -165,13 +178,13 @@ NEXT
  	PRINT myverb$
  ENDIF
  
- IF subject <> 255 THEN
- 	PRINT mynoun$
- ENDIF
+ 'IF subject <> 255 THEN
+ '	PRINT mynoun$
+' ENDIF
 
-IF word1$ == "QUIT" THEN 
-	GOTO endit
-ENDIF
+'IF word1$ == "QUIT" THEN 
+'	GOTO endit
+'ENDIF
 
 ' debug uncomment also crashes program
 'PRINT action
@@ -189,6 +202,16 @@ WEND
 endit:
 PRINT "END"
 HALT
+
+
+
+pausekey:
+' Wait for a keypress
+LOCATE 0,24: PRINT "Press any key"
+ REPEAT
+  REM LOOP 
+ UNTIL INKEY$ <> ""
+RETURN
 
 
 
