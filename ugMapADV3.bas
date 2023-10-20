@@ -13,6 +13,7 @@
 '--------------------------------------
 
 DEFINE KEYBOARD RATE 1
+DECLARE SYSTEM PROCEDURE reset AT 40999
 
 DIM noun$(30)
 noun$(0)="NORTH"
@@ -140,29 +141,31 @@ PRINT "Location: "
 LOCATE 0,13
 PRINT "Command Entry: "; 
 INPUT sentence$
-'PRINT "You Entered: " +  sentence$
+PRINT "You Entered: " +  sentence$
 
 REM Evaluate true if there is a space in the sentence
 IF INSTR(sentence$," ") THEN 
-	word1$ = LEFT$(sentence$,INSTR(sentence$," ")-1):word2$ = RIGHT$(sentence$,LEN(sentence$)-INSTR(sentence$," "))
+	word1$ = LEFT$(sentence$,INSTR(sentence$," ")-1)
+	word2$ = RIGHT$(sentence$,LEN(sentence$)-INSTR(sentence$," "))
 ELSE
 	REM JUST ONE WORD
-	word1$ = sentence$: word2$ = ""
+    word1$ = sentence$
+    word2$ = ""
 ENDIF
 
-PRINT "Word 1 " + word1$
-PRINT "Word 2 " + word2$
+PRINT "Verb " + word1$
+PRINT "Noun " + word2$
 
-action = 255
-subject = 255
+'action = 255
+'subject = 255
 
-FOR x = 0 TO 4
- IF	(LEFT$(word1$,3) = LEFT$(verb$(x),3)) THEN 
- 	action = x: myverb$ = verb$(x)
- ELSE
- 	REM nothing
- ENDIF
-NEXT
+'FOR x = 0 TO 4
+' IF	(LEFT$(word1$,3) = LEFT$(verb$(x),3)) THEN 
+' 	action = x: myverb$ = verb$(x)
+' ELSE
+' 	REM nothing
+' ENDIF
+'NEXT
  
 ' uncommenting this block crashes program
 'FOR y = 0 TO 6
@@ -174,9 +177,9 @@ NEXT
 'NEXT
 	 
  
- IF action <> 255 THEN
- 	PRINT myverb$
- ENDIF
+' IF action <> 255 THEN
+' 	PRINT myverb$
+' ENDIF
  
  'IF subject <> 255 THEN
  '	PRINT mynoun$
@@ -195,12 +198,13 @@ NEXT
 ' on subject gosub here ...
 
 
-WAIT 500 MS
+EXIT
 
 WEND 
 
 endit:
 PRINT "END"
+reset[]
 HALT
 
 
