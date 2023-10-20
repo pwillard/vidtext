@@ -13,6 +13,7 @@
 '--------------------------------------
 
 DEFINE KEYBOARD RATE 1
+DEFINE STRING SPACE 512
 DECLARE SYSTEM PROCEDURE reset AT 40999
 
 DIM noun$(30)
@@ -198,7 +199,7 @@ PRINT "Noun " + word2$
 ' on subject gosub here ...
 
 
-EXIT
+WAIT 500 MS
 
 WEND 
 
