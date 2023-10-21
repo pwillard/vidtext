@@ -4,6 +4,10 @@
 ' Purpose 	Mixed Screen Test
 ' 
 ' ugBasic 	Color Computer 3
+' 
+' NOTE This program is somehow doing 
+' a lot of things wrong as it fails
+' regularly when new things are added
 '
 '                    
 '  ,-. ,-. ,-. ,-.  ,-. 
@@ -13,10 +17,11 @@
 '--------------------------------------
 
 DEFINE KEYBOARD RATE 1
-DEFINE STRING SPACE 1024
-DEFINE STRING COUNT 128
-DECLARE SYSTEM PROCEDURE reset AT 40999
+DEFINE STRING SPACE 2048
+DEFINE STRING COUNT 256
 
+
+nouns = 9
 DIM noun$(30)
 noun$(0)="NORTH"
 noun$(1)="SOUTH"
@@ -25,38 +30,32 @@ noun$(3)="WEST"
 noun$(4)="UP"
 noun$(5)="DOWN"
 noun$(6)="STATUS"
+noun$(7)="RIGHT"
+noun$(8)="LEFT"
+noun$(9)="xxx"
 
-' Careful... we only check the first 3 letters.
+' Careful... we only check the first 2 letters.
+verbs=6
 DIM verb$(30)
 verb$(0)= "GO"
 verb$(1)= "GET"
 verb$(2)="LOOK"
 verb$(3)="CARRY"
 verb$(4)="STORE"
+verb$(5)="TURN"
+verb$(6)="xxx"
 
-GLOBAL action
-GLOBAL subject
-GLOBAL speed
-GLOBAL movecount
-GLOBAL finished
-GLOBAL speed
-GLOBAL center$
-GLOBAL x
+GLOBAL "*"
 
-PROCEDURE centerit[center$]
- width = 40
- x = (width - LEN(center$))/2
- sp$ = STRING$(" ",x)
- 'PRINT sp$;
- PRINT center$
-END PROC
-
-speed = 5
-
-CONST xloc = 21 
+CONST xloc = 22 
 ' status screen X location
 
-batt$ = "100%"
+speed = 5
+battery = 100
+hull = 100
+
+
+
 
 ' COCO 3 16 color medium resolution text
 BITMAP ENABLE (320,200,16)
@@ -70,11 +69,9 @@ CLS BLACK
 mainimage = LOAD IMAGE ("main.png")
 PUT IMAGE mainimage AT 0,0
 
-INK CYAN
-
 center$ = "SG-16 MALP Rescue Mission"
 x = (40 - LEN(center$))/2
-LOCATE x,8 : PRINT center$
+LOCATE x,8 :INK CYAN: PRINT center$
 
 INK WHITE
 LOCATE 0,10
@@ -116,6 +113,7 @@ GOSUB pausekey:
 mainscreen:
 
 WHILE NOT finished
+' infinie game loop
 CLS BLACK
 PEN WHITE
 INK WHITE
@@ -123,19 +121,21 @@ INK WHITE
 DRAW mid1,0 TO mid1,80
 DRAW 0,80 TO 320,80
 
-
-LOCATE xloc,0 
-PRINT "MALP STATUS";
-LOCATE xloc,1
-PRINT "Batt. Lvl: " + batt$
-LOCATE xloc,2
-
-INK RED
-PRINT "Alert Lvl: "+ "RED" 
-
-INK WHITE
-LOCATE xloc,3
-PRINT "Speed :";speed
+' update MALP status
+ INK CYAN
+ LOCATE xloc,0 
+ PRINT "MALP STATUS";
+ INK WHITE
+ LOCATE xloc,1
+ PRINT "Batt. %: ";battery
+ LOCATE xloc,2
+ PRINT "Hull  %: ";hull
+ LOCATE xloc,3
+ INK RED
+ PRINT "Alert Lvl: "+ "RED" 
+ INK WHITE
+ LOCATE xloc,4
+ PRINT "Speed :";speed
 
 INK GREEN  
 LOCATE 0,12
@@ -143,6 +143,7 @@ PRINT "Location: "
 LOCATE 0,13
 PRINT "Command Entry: "; 
 INPUT sentence$
+sentence$ = UPPER(sentence$) 
 PRINT "You Entered: " +  sentence$
 
 REM Evaluate true if there is a space in the sentence
@@ -158,53 +159,11 @@ ENDIF
 PRINT "Verb " + word1$
 PRINT "Noun " + word2$
 
-action = 255
-subject = 255
-myverb$ = ""
-mynoun$ = ""
-
-FOR x = 0 TO 4
- IF	(LEFT$(word1$,2) == LEFT$(verb$(x),2)) THEN 
- 	action = x
- 	myverb$ = verb$(x)
- ELSE
- 	REM nothing
- ENDIF
-NEXT
- 
-FOR y = 0 TO 6
-	IF (LEFT$(word2$,2) == LEFT$(noun$(y),2)) THEN
-	    subject = y
-	    mynoun$ = noun$(y)
-	ELSE
-		REM nothing
-	ENDIF
-NEXT
 
 
 PRINT "COMMAND: ";myverb$
-PRINT "SUBJECT: ";mynouns$
-PRINT "COMMAND = ";action
-PRINT "SUBJECT = ";subject
- 
- IF action <> 255 THEN
- 	PRINT myverb$ + ":";action
- ENDIF
- 
- IF subject <> 255 THEN
- 	PRINT mynoun$ + ":"; subject
- ENDIF
+'PRINT "SUBJECT: ";mynouns$
 
-IF word1$ == "QUIT" THEN 
-	GOTO endit
-ENDIF
-
-' debug uncomment also crashes program
-
-
-' on action gosub here ...
-
-' on subject gosub here ...
 
 
 WAIT 3000 MS
@@ -214,9 +173,8 @@ WEND
 endit:
 CLS
 PRINT "END"
-reset[]
-HALT
 
+HALT
 
 
 pausekey:
@@ -226,6 +184,7 @@ LOCATE 0,24: PRINT "Press any key"
   REM LOOP 
  UNTIL INKEY$ <> ""
 RETURN
+
 
 
 
