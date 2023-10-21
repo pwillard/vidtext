@@ -13,7 +13,8 @@
 '--------------------------------------
 
 DEFINE KEYBOARD RATE 1
-DEFINE STRING SPACE 512
+DEFINE STRING SPACE 1024
+DEFINE STRING COUNT 128
 DECLARE SYSTEM PROCEDURE reset AT 40999
 
 DIM noun$(30)
@@ -157,53 +158,61 @@ ENDIF
 PRINT "Verb " + word1$
 PRINT "Noun " + word2$
 
-'action = 255
-'subject = 255
+action = 255
+subject = 255
+myverb$ = ""
+mynoun$ = ""
 
-'FOR x = 0 TO 4
-' IF	(LEFT$(word1$,3) = LEFT$(verb$(x),3)) THEN 
-' 	action = x: myverb$ = verb$(x)
-' ELSE
-' 	REM nothing
-' ENDIF
-'NEXT
+FOR x = 0 TO 4
+ IF	(LEFT$(word1$,2) == LEFT$(verb$(x),2)) THEN 
+ 	action = x
+ 	myverb$ = verb$(x)
+ ELSE
+ 	REM nothing
+ ENDIF
+NEXT
  
-' uncommenting this block crashes program
-'FOR y = 0 TO 6
-'	IF (LEFT$(word2$,3) = LEFT$(noun$(y),3)) THEN
-'	    subject = y: mynoun$ = noun$(y)
-'	ELSE
-'		REM nothing
-'	ENDIF
-'NEXT
-	 
- 
-' IF action <> 255 THEN
-' 	PRINT myverb$
-' ENDIF
- 
- 'IF subject <> 255 THEN
- '	PRINT mynoun$
-' ENDIF
+FOR y = 0 TO 6
+	IF (LEFT$(word2$,2) == LEFT$(noun$(y),2)) THEN
+	    subject = y
+	    mynoun$ = noun$(y)
+	ELSE
+		REM nothing
+	ENDIF
+NEXT
 
-'IF word1$ == "QUIT" THEN 
-'	GOTO endit
-'ENDIF
+
+PRINT "COMMAND: ";myverb$
+PRINT "SUBJECT: ";mynouns$
+PRINT "COMMAND = ";action
+PRINT "SUBJECT = ";subject
+ 
+ IF action <> 255 THEN
+ 	PRINT myverb$ + ":";action
+ ENDIF
+ 
+ IF subject <> 255 THEN
+ 	PRINT mynoun$ + ":"; subject
+ ENDIF
+
+IF word1$ == "QUIT" THEN 
+	GOTO endit
+ENDIF
 
 ' debug uncomment also crashes program
-'PRINT action
-'PRINT subject
+
 
 ' on action gosub here ...
 
 ' on subject gosub here ...
 
 
-WAIT 500 MS
+WAIT 3000 MS
 
 WEND 
 
 endit:
+CLS
 PRINT "END"
 reset[]
 HALT
@@ -217,6 +226,7 @@ LOCATE 0,24: PRINT "Press any key"
   REM LOOP 
  UNTIL INKEY$ <> ""
 RETURN
+
 
 
 
